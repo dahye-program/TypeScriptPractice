@@ -2,17 +2,20 @@ import React from 'react';
 import { ITask } from '../Interfaces';
 
 interface Props {
-  task: ITask
+  task: ITask,
+  completeTask(taskNameToDelete: string): void;
 }
 
-const TodoTask = ({ task }: Props) => {
+const TodoTask = ({ task, completeTask }: Props) => {
   return (
     <div className='task'>
       <div className='content'>
         <span>{task.taskName}</span>
         <span>{task.deadline}</span>
       </div>
-      <button>X</button>
+      <button onClick={() => {
+        completeTask(task.taskName);
+      }}>X</button>
     </div>
   )
 }
